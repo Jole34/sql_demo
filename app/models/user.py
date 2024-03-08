@@ -1,5 +1,5 @@
 from . import Base
-from sqlalchemy import Column, Integer, String, DateTime, func, Float
+from sqlalchemy import Column, Integer, String, DateTime, func, Float, Boolean
 from sqlalchemy.ext.hybrid import hybrid_property
 
 
@@ -10,6 +10,7 @@ class User(Base):
     budget = Column(Float, nullable=False, default=0)
     name = Column(String, nullable=False)
     created_on = Column(DateTime, nullable=False, server_default=func.now())
+    active = Column(Boolean, nullable=True)
 
     @hybrid_property
     def is_rich(self):
